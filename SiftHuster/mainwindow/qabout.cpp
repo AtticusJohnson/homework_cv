@@ -46,19 +46,18 @@ void QAbout::initUiComponent(void)
     authorLabel->setText(tr("Author: gitorup"));
     authorLabel->setGeometry(100, 30, label_w, label_h);
 
-//    infoLabel = new QLabel(this);
-//    infoLabel->setOpenExternalLinks(true);
-//    infoLabel->setText(tr("<a href=\"https://github.com/gitorup/QImageViewer\">"
-//                          "[https://github.com/gitorup/QImageViewer]"));
-//    infoLabel->setGeometry(40, 50, label_w, label_h);
+    infoLabel = new QLabel(this);
+    infoLabel->setOpenExternalLinks(true);
+    infoLabel->setText(tr("<a href=\"https://github.com/AtticusJohnson/homework_cv\">"
+                          "[https://github.com/AtticusJohnson/homework_cv]"));
+    infoLabel->setGeometry(40, 50, label_w, label_h);
 
     QString info;
     info.append("                                     Statement\n");
     info.append("SiftGUI is homework for Computer Vision lessonc in HUST. ");
     info.append("Authors: SenQiao M201972716 & Haodong Tian m201972598."
                 "If you have any question, please contact us."
-                "Email: 653999083@qq.com"
-                );
+                "Email: 653999083@qq.com");
 
 
     infoTextEdit = new QTextEdit(this);
