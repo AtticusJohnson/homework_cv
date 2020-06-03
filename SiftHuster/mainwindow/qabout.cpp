@@ -29,34 +29,34 @@ void QAbout::exitBtnClicked(void)
 
 void QAbout::initUiComponent(void)
 {
-    int label_w = 300, label_h = 20;
-    int text_w = 300, text_h = 120;
+    int label_w = 400, label_h = 20;
+    int text_w = 400, text_h = 120;
     int btn_w = 80, btn_h = 30;
     int btn_x = QABOUT_WIDGET_WIDTH - btn_w;
     int btn_y = QABOUT_WIDGET_HEIGHT - btn_h;
 
     titleLabel = new QLabel(this);
     titleLabel->setText(tr("SiftGUI for Windows(Version v0.0.1)"));
-    titleLabel->setGeometry(20, 10, label_w, label_h);
+    titleLabel->setGeometry(60, 10, label_w, label_h);
 
     QFont titleFont("Microsoft YaHei", 10, QFont::Bold);
     titleLabel->setFont(titleFont);
 
     authorLabel = new QLabel(this);
-    authorLabel->setText(tr("Author: gitorup"));
-    authorLabel->setGeometry(100, 30, label_w, label_h);
+    authorLabel->setText(tr("Author: SenQiao"));
+    authorLabel->setGeometry(160, 30, label_w, label_h);
 
     infoLabel = new QLabel(this);
     infoLabel->setOpenExternalLinks(true);
     infoLabel->setText(tr("<a href=\"https://github.com/AtticusJohnson/homework_cv\">"
                           "[https://github.com/AtticusJohnson/homework_cv]"));
-    infoLabel->setGeometry(40, 50, label_w, label_h);
+    infoLabel->setGeometry(30, 50, label_w, label_h);
 
     QString info;
     info.append("                                     Statement\n");
-    info.append("SiftGUI is homework for Computer Vision lessonc in HUST. ");
-    info.append("Authors: SenQiao M201972716 & Haodong Tian m201972598."
-                "If you have any question, please contact us."
+    info.append("SiftGUI is homework for Computer Vision lessonc in HUST. \n");
+    info.append("Authors: SenQiao M201972716 & Haodong Tian m201972598.\n"
+                "If you have any question, please contact us.\n"
                 "Email: 653999083@qq.com");
 
 

@@ -1,4 +1,4 @@
-#ifndef QABOUT_H
+﻿#ifndef QABOUT_H
 #define QABOUT_H
 
 #include <QWidget>
@@ -6,7 +6,7 @@
 #include <QLabel>
 #include <QTextEdit>
 
-#define QABOUT_WIDGET_WIDTH     320
+#define QABOUT_WIDGET_WIDTH     420
 #define QABOUT_WIDGET_HEIGHT    240
 
 class QAbout : public QWidget
