@@ -8,7 +8,7 @@ int main(int argc, char **argv)
     MainWindow mainWindow;
 
     mainWindow.resize(1024, 600);
-    mainWindow.setWindowIcon(QIcon(":/images/logo.png"));
+    mainWindow.setWindowIcon(QIcon(":/images/window.png"));
     mainWindow.show();
     return app.exec();
 }

@@ -75,7 +75,8 @@ int program(const char* path)
     Gaussianpyr = sift.BuildGaussianOctaves(tempMat);
 
     t = double(cvGetTickCount() - t);
-    printf("the time of build Gaussian pyramid and DOG pyramid is %.1f/n", t / (cvGetTickFrequency()*1000.));
+
+    //    printf("the time of build Gaussian pyramid and DOG pyramid is %.1f/n", t / (cvGetTickFrequency()*1000.));
 
 #define ImLevels(OCTAVE,LEVEL,ROW,COL) ((float *)(Gaussianpyr[(OCTAVE)].Octave[(LEVEL)].Level->data.fl + Gaussianpyr[(OCTAVE)].Octave[(LEVEL)].Level->step/sizeof(float) *(ROW)))[(COL)]
 
@@ -115,13 +116,15 @@ int program(const char* path)
     cvConvertScaleAbs(mosaicVertical1, mosaic1, 1, 0);
 
     //  cvSaveImage("GaussianPyramid of me.jpg",mosaic1);
-//    cvNamedWindow("mosaic1", 1);
-//    cvShowImage("mosaic1", mosaic1);
+    //    cvNamedWindow("mosaic1", 1);
+    //    cvShowImage("mosaic1", mosaic1);
     Mat Img0;
     Img0 = cvarrToMat(mosaic1);
+
     imwrite("D:/Code/cpp/homework_cv/SiftHuster/results/mosaic1.jpg", Img0);
-//    cvWaitKey(0);
-//    cvDestroyWindow("mosaic1");
+
+    //    cvWaitKey(0);
+    //    cvDestroyWindow("mosaic1");
 
 
     for (int i = 0; i < numoctaves; i++)
@@ -162,12 +165,14 @@ int program(const char* path)
     mosaic2 = cvCreateImage(cvSize(mosaicVertical1->width, mosaicVertical1->height), IPL_DEPTH_8U, 1);
     cvConvertScale(mosaicVertical1, mosaicVertical1, 255.0 / (max_val - min_val), 0);
     cvConvertScaleAbs(mosaicVertical1, mosaic2, 1, 0);
+
     Mat Img1;
     Img1 = cvarrToMat(mosaic2);
     imwrite("D:/Code/cpp/homework_cv/SiftHuster/results/DOGPyramid.jpg", Img1);
-//    cvNamedWindow("mosaic1", 1);
-//    cvShowImage("mosaic1", mosaic2);
-//    cvWaitKey(0);
+
+    //    cvNamedWindow("mosaic1", 1);
+    //    cvShowImage("mosaic1", mosaic2);
+    //    cvWaitKey(0);
 
 
     int keycount = sift.DetectKeypoint(numoctaves, Gaussianpyr);
@@ -177,17 +182,18 @@ int program(const char* path)
     show.DisplayKeypointLocation(image1, Gaussianpyr);
 
     cvPyrUp(image1, doubleSizeImage, CV_GAUSSIAN_5x5);
-//    cvNamedWindow("image1", 1);
-//    cvShowImage("image1", doubleSizeImage);
+    //    cvNamedWindow("image1", 1);
+    //    cvShowImage("image1", doubleSizeImage);
     Mat Img2;
-    Mat _Img2;
-    Size dsize = Size(cvarrToMat(image1).cols, cvarrToMat(image1).rows);
+//    Mat _Img2;
+//    Size dsize = Size(cvarrToMat(image1).cols, cvarrToMat(image1).rows);
     Img2 = cvarrToMat(doubleSizeImage);
-    resize(Img2, _Img2, dsize);
-    imwrite("D:/Code/cpp/homework_cv/SiftHuster/results/keypoint.jpg", _Img2);
-//    cvSaveImage("keypoint.jpg", doubleSizeImage);
-//    cvWaitKey(0);
-//    cvDestroyWindow("image1");
+//    resize(Img2, _Img2, dsize);
+    imwrite("D:/Code/cpp/homework_cv/SiftHuster/results/keypoint.jpg", Img2);
+
+    //    cvSaveImage("keypoint.jpg", doubleSizeImage);
+    //    cvWaitKey(0);
+    //    cvDestroyWindow("image1");
 
     sift.ComputeGrad_DirecandMag(numoctaves, Gaussianpyr);
     sift.AssignTheMainOrientation(numoctaves, Gaussianpyr, mag_pyr, grad_pyr);
@@ -195,13 +201,13 @@ int program(const char* path)
     sift.DisplayOrientation(image1, Gaussianpyr);
 
     //  cvPyrUp( image1, doubleSizeImage, CV_GAUSSIAN_5x5 );
-//    cvNamedWindow("image1", 1);
+    //    cvNamedWindow("image1", 1);
     //  cvResizeWindow("image1", 2*(image1->width), 2*(image1->height) );
-//    cvShowImage("image1", image1);
+    //    cvShowImage("image1", image1);
     Mat Img3;
     Img3 = cvarrToMat(image1);
     imwrite("D:/Code/cpp/homework_cv/SiftHuster/results/direction.jpg", Img3);
-//    cvWaitKey(0);
+    //    cvWaitKey(0);
 
 
     int count = sift.ExtractFeatureDescriptors(numoctaves, Gaussianpyr, keyDescriptors);
@@ -221,9 +227,9 @@ int program(const char* path)
         p2 = p2->next;
     }*/
     /*cout << endl << count << endl << count2;*/
-//    cvWaitKey(0);
-//    cvDestroyWindow("image1");
-//    cvDestroyWindow("mosaic1");
+    //    cvWaitKey(0);
+    //    cvDestroyWindow("image1");
+    //    cvDestroyWindow("mosaic1");
     cvReleaseImage(&image1);
     cvReleaseImage(&grey_im1);
     cvReleaseImage(&mosaic1);

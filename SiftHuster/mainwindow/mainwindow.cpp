@@ -28,15 +28,8 @@
 #include <QTabWidget>  // 不算控件
 #include <QVBoxLayout>
 #include <QCompleter>
-#include <QTextEdit>
 #include <QHBoxLayout>
-#include <QDebug>
-#include <QObject>
-#include <QPixmap>
-#include <QLCDNumber>
-#include <QPushButton>
-#include <QMessageBox>
-#include <QDir>
+
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
@@ -63,7 +56,7 @@ void MainWindow::initImageResource(void)
 {
     imageLabel1->clear();
     imageLabel1->resize(QSize(200, 100));
-    setWindowTitle(tr("QImageViewer"));
+    setWindowTitle(tr("SiftGUI"));
 }
 
 void MainWindow::loadImageResource(void)
@@ -347,8 +340,8 @@ void MainWindow::setWindowComponet(void)
     aboutQt->setStatusTip(tr("About Qt"));
     aboutQt->setIcon(QIcon(":/images/Qt.png"));
 
-    QAction *about = new QAction(tr("About QImageViewer"), this);
-    about->setStatusTip(tr("About QImageViewer"));
+    QAction *about = new QAction(tr("About SiftGUI"), this);
+    about->setStatusTip(tr("About SiftGUI"));
     about->setIcon(QIcon(":/images/help.png"));
 
     QMenu *fileMenu = menuBar->addMenu(tr("File"));
