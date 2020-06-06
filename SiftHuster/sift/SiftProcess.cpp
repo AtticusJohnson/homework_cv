@@ -411,7 +411,6 @@ void SiftProcess::AssignTheMainOrientation(int numoctaves, ImageOctaves *Gaussia
 
     int keypoint_count = 0;
     Keypoint p = keypoints;
-
     while (p)
     {
         int i = p->octave;
@@ -429,6 +428,7 @@ void SiftProcess::AssignTheMainOrientation(int numoctaves, ImageOctaves *Gaussia
 #define MAT(ROW,COL) ((float *)(mat->data.fl + mat->step/sizeof(float) *(ROW)))[(COL)]
 
             double* orienthist = (double *)malloc(36 * sizeof(double));
+//            double* orienthist = new double;
             for (int sw = 0; sw < 36; ++sw)
             {
                 orienthist[sw] = 0.0;
@@ -529,6 +529,7 @@ void SiftProcess::AssignTheMainOrientation(int numoctaves, ImageOctaves *Gaussia
                 k->next = keyDescriptors;
                 keyDescriptors = k;
                 k->descrip = (float*)malloc(LEN * sizeof(float));
+//                k->descrip = new float;
                 k->row = p->row;
                 k->col = p->col;
                 k->sy = p->sy;
@@ -539,10 +540,12 @@ void SiftProcess::AssignTheMainOrientation(int numoctaves, ImageOctaves *Gaussia
                 k->ori = degree;
                 k->mag = peakValue;
             }//for
-            free(orienthist);
+            delete(orienthist);
         }
         p = p->next;
+
     }
+
 }
 
 void SiftProcess::DisplayOrientation(IplImage* image, ImageOctaves *GaussianPyr)

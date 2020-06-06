@@ -120,7 +120,6 @@ int program(const char* path)
     //    cvShowImage("mosaic1", mosaic1);
     Mat Img0;
     Img0 = cvarrToMat(mosaic1);
-
     imwrite("D:/Code/cpp/homework_cv/SiftHuster/results/mosaic1.jpg", Img0);
 
     //    cvWaitKey(0);
@@ -185,10 +184,10 @@ int program(const char* path)
     //    cvNamedWindow("image1", 1);
     //    cvShowImage("image1", doubleSizeImage);
     Mat Img2;
-//    Mat _Img2;
-//    Size dsize = Size(cvarrToMat(image1).cols, cvarrToMat(image1).rows);
+    Mat _Img2;
+    Size dsize = Size(cvarrToMat(image1).cols, cvarrToMat(image1).rows);
     Img2 = cvarrToMat(doubleSizeImage);
-//    resize(Img2, _Img2, dsize);
+    resize(Img2, _Img2, dsize);
     imwrite("D:/Code/cpp/homework_cv/SiftHuster/results/keypoint.jpg", Img2);
 
     //    cvSaveImage("keypoint.jpg", doubleSizeImage);
@@ -196,7 +195,9 @@ int program(const char* path)
     //    cvDestroyWindow("image1");
 
     sift.ComputeGrad_DirecandMag(numoctaves, Gaussianpyr);
+
     sift.AssignTheMainOrientation(numoctaves, Gaussianpyr, mag_pyr, grad_pyr);
+
     cvCopy(src, image1, nullptr);
     sift.DisplayOrientation(image1, Gaussianpyr);
 
